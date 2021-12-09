@@ -7,6 +7,7 @@ if len(sys.argv) != 3:
    print("You need to specify key and path to image")
    sys.exit(1) 
 key, path = sys.argv[1], sys.argv[2]
+print("Key: ", key, " Path: ", path)
 print('Обработка')
 backend = FERBackend(path)
 backend.exec()

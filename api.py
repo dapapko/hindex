@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request, jsonify
 from flask_cors import CORS
+from bson.objectid import ObjectId
 
 import json
 from pymongo import MongoClient
@@ -15,7 +16,8 @@ db = client.hindex
 def set_result():
     data = json.loads(request.get_data().decode("UTF-8"))
     collection = db.responses
-    collection.update_one({'_id': data['key']},{ '$set': data['result'] }, upsert=False)
+    print("Key: ", data['key'])
+    collection.update_one({'_id': ObjectId(data['key'])},{ '$set': data['result'] }, upsert=False)
     return jsonify({"success":True})
     
 @app.route('/', methods=['POST'])
