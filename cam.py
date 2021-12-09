@@ -7,11 +7,11 @@ from ferBackend import FERBackend
 pygame.camera.init()
 cameras = pygame.camera.list_cameras()
 print ("Using camera %s ..." % cameras[0])
-if len(sys.argv) == 0:
+if len(sys.argv) == 1:
    print("You need to specify key")
    sys.exit(1) 
 webcam = pygame.camera.Camera(cameras[0])
-token = sys.argv[0]
+token = sys.argv[1]
 webcam.start()
 
 # grab first frame
